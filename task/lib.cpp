@@ -87,7 +87,6 @@ void RussianMessage(const char* s)
 void RemovesCharWithGivenIndex(char* ptr1, char* ptr2, int index)
 {
 	int strSize = strlen(ptr1);
-	int sizeofPtr1 = sizeof(ptr1);
 	char left[50]{ 0 }, right[50]{ 0 };
 	if (index == 0) // удаляем 1 букву, нету левой части
 		strncat_s(ptr2, sizeof(ptr2), ptr1 + index + 1, strSize - index);
@@ -100,4 +99,59 @@ void RemovesCharWithGivenIndex(char* ptr1, char* ptr2, int index)
 	}
 	else if (index == strSize - 1) // удаляем последнюю букву, правой части нету
 		strncpy_s(ptr2, sizeof(ptr2), ptr1, strSize - 1);
+}
+
+// Функция, удаляет из строки все вхождения в нее заданного символа.
+char* RemovesAllOccurOfCharFromString(char* ptr1, char symbol)
+{
+	// a b b b b b b r a a a  a  c  a  d  a  b  r  a
+	// 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+	int i{ 0 };
+	int lenght{ 0 };
+	char* strNew{ nullptr };
+
+	for (int j = 0; ptr1[j] != '\0'; j++) // подсчет размера массива под обработанную строку
+	{
+		if (ptr1[j] != symbol)
+		{
+			lenght++;
+		}
+	}
+
+	strNew = new char[lenght + 1]{ '\0' }; // кол-во копируемых символов 11, + 1 нуль терм. = 12.
+	while (true)
+	{
+		while (ptr1[i] != symbol)
+		{
+			strncat_s(strNew, lenght + 1, (ptr1 + i), 1);
+			i++;
+		}
+		i++;
+		if (ptr1[i] == '\0')
+			break;
+	}
+
+	return strNew;
+}
+
+// Функция, принимает в качестве параметра строку
+// символов. Проверяет является ли эта строка палиндромом.
+bool IsPalindrome(char* ptr)
+{
+	int len = strlen(ptr) + 1;
+	char* original = new char[len] { '\0' }; // Создаем динам. массив "original" для последующей работы с реверсированной строкой из "ptr"
+	char* reverse = new char[len] { '\0' }; // Создаем динам. массив "reverse" для последующей работы с реверсированной строкой из "ptr"
+
+	strcpy_s(original, len, ptr); // Копируем из "ptr" в дин. массив "original"
+	_strlwr_s(original, len); // Переводим в нижний регистр дин. строку "original"
+	// тут нужно дописать удаление пробелов, знаков припинания в массиве "original" для последующего сравнения сугубо букв из массивов original и reverse
+	strcpy_s(reverse, len, original); // Копируем из "original" (уже в нижнем регистре) в "reverse"
+	_strrev(reverse); // Реверсируем строку 
+	if (strcmp(original, reverse) == 0)
+		return true;
+	else
+		return false;
+
+	/*delete[] original;
+	delete[] reverse;*/
 }

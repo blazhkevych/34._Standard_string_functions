@@ -22,7 +22,7 @@ int main()
 		//cin >> choice;
 		//cin.get();
 
-		switch (1)
+		switch (3)
 			//switch (choice)
 		{
 		case 1:
@@ -33,6 +33,7 @@ int main()
 			входные параметры.
 			*/
 			//1:40:40 описание дз
+			// Из функции должен возвращатся динам. массив с модиф. строкой. Переделать!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!.
 			int index{ 0 };
 			char str1[] = "String"; // 6 символов (0,1,2,3,4,5 - возможные индексы)
 			char* ptrStr1 = str1;
@@ -44,7 +45,6 @@ int main()
 			cout << str1 << endl;
 			RussianMessage("Модифицированная строка: ");
 			cout << str2 << endl;
-
 		}
 		break;
 
@@ -55,7 +55,16 @@ int main()
 			заданного символа. Строку и символ необходимо передать в функцию
 			через входные параметры.
 			*/
-
+			//1:40:40 описание дз
+			char symbol{ 'a' };
+			char str1[100] = "abzxcvnraaaacadabra"; // 19 символов
+			char* ptrStr2{ nullptr };
+			ptrStr2 = RemovesAllOccurOfCharFromString(str1, symbol);
+			RussianMessage("Строка: ");
+			cout << str1 << endl;
+			RussianMessage("Модифицированная строка: ");
+			cout << ptrStr2 << endl;
+			delete[] ptrStr2;
 		}
 		break;
 
@@ -65,7 +74,16 @@ int main()
 			3. Написать функцию, которая принимает в качестве параметра строку
 			символов. Необходимо проверить является ли эта строка палиндромом.
 			*/
+			char str1[100] = "okro"; // Was it a car or a cat I saw
+			char* ptrStr2{ nullptr };
+			RussianMessage("Строка: ");
+			cout << str1 << endl;
 
+			bool result = IsPalindrome(str1);
+			if (result == true)
+				cout <<"\Palindrome!" << endl;
+			else
+				cout << "\nNot a palindrome!" << endl;			
 		}
 		break;
 

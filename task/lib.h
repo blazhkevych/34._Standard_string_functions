@@ -11,3 +11,10 @@ void RussianMessage(const char* s);
 // Функция, которая удаляет из строки символ с заданным
 // индексом. 
 void RemovesCharWithGivenIndex(char* ptr1, char* ptr2, int index);
+
+// Функция, удаляет из строки все вхождения в нее заданного символа.
+char *  RemovesAllOccurOfCharFromString(char* ptr1, char symbol);
+
+// Функция, принимает в качестве параметра строку
+// символов. Проверяет является ли эта строка палиндромом.
+bool IsPalindrome(char * ptr);
