@@ -18,3 +18,6 @@ char *  RemovesAllOccurOfCharFromString(char* ptr1, char symbol);
 // Функция, принимает в качестве параметра строку
 // символов. Проверяет является ли эта строка палиндромом.
 bool IsPalindrome(char * ptr);
+
+// Функция, вставляет заданный символ в строку в указанную позицию. 
+char * InsertCharInStrAtGivenPos();

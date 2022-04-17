@@ -140,18 +140,45 @@ bool IsPalindrome(char* ptr)
 {
 	int len = strlen(ptr) + 1;
 	char* original = new char[len] { '\0' }; // Создаем динам. массив "original" для последующей работы с реверсированной строкой из "ptr"
+	char* originalCleared = new char[len] { '\0' };
 	char* reverse = new char[len] { '\0' }; // Создаем динам. массив "reverse" для последующей работы с реверсированной строкой из "ptr"
 
 	strcpy_s(original, len, ptr); // Копируем из "ptr" в дин. массив "original"
 	_strlwr_s(original, len); // Переводим в нижний регистр дин. строку "original"
-	// тут нужно дописать удаление пробелов, знаков припинания в массиве "original" для последующего сравнения сугубо букв из массивов original и reverse
-	strcpy_s(reverse, len, original); // Копируем из "original" (уже в нижнем регистре) в "reverse"
-	_strrev(reverse); // Реверсируем строку 
-	if (strcmp(original, reverse) == 0)
-		return true;
-	else
-		return false;
+	int i{ 0 }, count{ 0 };
+	char* from{ nullptr };
+	while (true)
+	{
+		if (char(*(original + i)) >= 'a' && char(*(original + i)) <= 'z')
+		{
+			from = original + i; // начало строки для копирования
+			count = 0;
+			while (char(*(original + i)) >= 'a' && char(*(original + i)) <= 'z')
+			{
+				count++; // подсчет кол-ва символов для копирования
+				i++;
+			}
+			strncat_s(originalCleared, len, from, count);
+		}
+		i++;
+		if (original[i] == '\0')
+			break;
+	}
 
-	/*delete[] original;
-	delete[] reverse;*/
+	strcpy_s(reverse, len, originalCleared); // Копируем из "originalCleared" (уже в нижнем регистре и наличии только букв) в "reverse"
+	_strrev(reverse); // Реверсируем строку 
+	if (strcmp(originalCleared, reverse) == 0)
+	{
+		delete[] original;
+		delete[] originalCleared;
+		delete[] reverse;
+		return true;
+	}
+	else
+	{
+		delete[] original;
+		delete[] originalCleared;
+		delete[] reverse;
+		return false;
+	}
 }

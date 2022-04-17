@@ -8,9 +8,6 @@ int main()
 {
 	char answer{ 0 }; // Do you want to continue?
 	int choice{ 0 }; // Выбор задания
-
-	char str1[100], str2[100], * p;
-
 	do
 	{
 		cout << "Enter task number:: "
@@ -18,11 +15,11 @@ int main()
 			<< "\nTask 2."
 			<< "\nTask 3."
 			<< "\nTask 4."
-			<< endl;
+			<< endl << endl;
 		//cin >> choice;
 		//cin.get();
 
-		switch (3)
+		switch (4)
 			//switch (choice)
 		{
 		case 1:
@@ -33,7 +30,6 @@ int main()
 			входные параметры.
 			*/
 			//1:40:40 описание дз
-			// Из функции должен возвращатся динам. массив с модиф. строкой. Переделать!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!.
 			int index{ 0 };
 			char str1[] = "String"; // 6 символов (0,1,2,3,4,5 - возможные индексы)
 			char* ptrStr1 = str1;
@@ -59,6 +55,7 @@ int main()
 			char symbol{ 'a' };
 			char str1[100] = "abzxcvnraaaacadabra"; // 19 символов
 			char* ptrStr2{ nullptr };
+			// переписать фун-ю по примеру из 3 задания (копирование фрагментов вместо копирования посимвольно)
 			ptrStr2 = RemovesAllOccurOfCharFromString(str1, symbol);
 			RussianMessage("Строка: ");
 			cout << str1 << endl;
@@ -74,16 +71,16 @@ int main()
 			3. Написать функцию, которая принимает в качестве параметра строку
 			символов. Необходимо проверить является ли эта строка палиндромом.
 			*/
-			char str1[100] = "okro"; // Was it a car or a cat I saw
+			char str1[100] = "Was it a car or a cat I saw"; // Was it a car or a cats I saw
 			char* ptrStr2{ nullptr };
 			RussianMessage("Строка: ");
 			cout << str1 << endl;
 
 			bool result = IsPalindrome(str1);
 			if (result == true)
-				cout <<"\Palindrome!" << endl;
+				cout << "Palindrome!" << endl;
 			else
-				cout << "\nNot a palindrome!" << endl;			
+				cout << "Not a palindrome!" << endl;
 		}
 		break;
 
@@ -94,7 +91,11 @@ int main()
 			указанную позицию. Строку, символ и позицию необходимо передать в
 			функцию через входные параметры.
 			*/
-
+			char str1[100] = "Was it a car or a cat I saw"; // Was it a car or a cats I saw
+			char* ptrStr2{ nullptr };
+			RussianMessage("Строка: ");
+			cout << str1 << endl;
+			ptrStr2 = InsertCharInStrAtGivenPos();
 		}
 		break;
 		}
