@@ -71,8 +71,7 @@ int main()
 			3. Написать функцию, которая принимает в качестве параметра строку
 			символов. Необходимо проверить является ли эта строка палиндромом.
 			*/
-			char str1[100] = "Was it a car or a cat I saw"; // Was it a car or a cats I saw
-			char* ptrStr2{ nullptr };
+			char str1[100] = "Was it a car or a cat I saw."; // Was it a car or a cats I saw
 			RussianMessage("Строка: ");
 			cout << str1 << endl;
 
@@ -91,11 +90,17 @@ int main()
 			указанную позицию. Строку, символ и позицию необходимо передать в
 			функцию через входные параметры.
 			*/
-			char str1[100] = "Was it a car or a cat I saw"; // Was it a car or a cats I saw
+			char str1[100] = "Don`t judge a book by it`s cover."; // 33 + 1 нуль терм. = 34
 			char* ptrStr2{ nullptr };
+			char symbol{ '#' };
+			int index{ 19 };
 			RussianMessage("Строка: ");
 			cout << str1 << endl;
-			ptrStr2 = InsertCharInStrAtGivenPos();
+			ptrStr2 = InsertCharInStrAtGivenPos(str1, symbol, index);
+			RussianMessage("Модифицированная строка: ");
+			cout << ptrStr2 << endl;
+
+			delete[] ptrStr2;
 		}
 		break;
 		}

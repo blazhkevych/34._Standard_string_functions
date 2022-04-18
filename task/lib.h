@@ -20,4 +20,4 @@ char *  RemovesAllOccurOfCharFromString(char* ptr1, char symbol);
 bool IsPalindrome(char * ptr);
 
 // Функция, вставляет заданный символ в строку в указанную позицию. 
-char * InsertCharInStrAtGivenPos();
+char * InsertCharInStrAtGivenPos(char * ptr, char symbol, int index);

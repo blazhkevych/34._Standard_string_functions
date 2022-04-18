@@ -182,3 +182,18 @@ bool IsPalindrome(char* ptr)
 		return false;
 	}
 }
+
+// Функция, вставляет заданный символ в строку в указанную позицию. 
+char* InsertCharInStrAtGivenPos(char* ptr, char symbol, int index)
+{
+	int len = strlen(ptr) + 1; // Длина входящей строки.
+	int lenRes = len + 1; // Размер итоговой строки (+ 1 новый символ).
+	char* result = new char[lenRes] { '\0' }; // Итоговая строка + 1 новый символ.
+
+	strncat_s(result, lenRes, ptr, index); // Конкатенируем левую часть, до индекса
+	//char* ptrSymbol = &symbol;
+	strncat_s(result, lenRes, &symbol, 1); // Конкатенируем в заданный индекс символ
+	strncat_s(result, lenRes, ptr + index, len - index); // Конкатенируем правую часть 
+
+	return result;
+}
