@@ -16,11 +16,10 @@ int main()
 			<< "\nTask 3."
 			<< "\nTask 4."
 			<< endl << endl;
-		//cin >> choice;
-		//cin.get();
+		cin >> choice;
+		cin.get();
 
-		switch (4)
-			//switch (choice)
+		switch (choice)
 		{
 		case 1:
 		{
